@@ -94,3 +94,59 @@ console.log(addOverNum(50, 15, 27)); // повертає 0
 console.log(addOverNum(10, 12, 4, 11, 48, 10, 8)); // повертає 71
 console.log(addOverNum(15, 32, 6, 13, 19, 8)); // повертає 51
 console.log(addOverNum(20, 74, 11, 62, 46, 12, 36)); // повертає 218
+
+function deliverPizza(pizzaName) {
+  return `Delivering ${pizzaName} pizza.`;
+}
+
+function makePizza(pizzaName) {
+  return `Pizza ${pizzaName} is being prepared, please wait...`;
+}
+
+function makeMessage(pizzaName, callback) {
+  return callback(pizzaName);
+}
+
+console.log(makeMessage("Ultracheese", deliverPizza));
+
+function makePizza(pizzaName, callback) {
+  console.log(`Pizza ${pizzaName} is being prepared, please wait...`);
+  callback(pizzaName);
+}
+
+makePizza("Royal Grand", function deliverPizza(pizzaName) {
+  console.log(`Delivering pizza ${pizzaName}`);
+});
+
+makePizza("Ultracheese", function eatPizza(pizzaName) {
+  console.log(`Eating pizza ${pizzaName}`);
+});
+
+function calculateTotalPrice(orderedItems) {
+  let totalPrice = 0;
+
+  orderedItems.forEach(function (orderedItem) {
+    totalPrice += orderedItem;
+  });
+
+  return totalPrice;
+}
+console.log(calculateTotalPrice([12, 85, 37, 4])); // повертає 138
+console.log(calculateTotalPrice([164, 48, 291])); // повертає 503
+console.log(calculateTotalPrice([412, 371, 94, 63, 176])); // повертає 1116
+
+function filterArray(numbers, value) {
+  let newNumbers = [];
+  numbers.forEach(function (number) {
+    if (number > value) {
+      newNumbers.push(number);
+    }
+  });
+  return newNumbers;
+}
+
+console.log(filterArray([1, 2, 3, 4, 5], 3)); //повертає [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); //повертає [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); //повертає []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); //повертає [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); //повертає [24, 41, 76]
